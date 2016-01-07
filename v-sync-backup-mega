@@ -1,0 +1,63 @@
+#!/bin/bash
+# info: copy backups user or all users to mega cloud
+# options: count
+# The function for copy backups user or all users to mega cloud.
+
+#----------------------------------------------------------#
+#                Configuration definition                  #
+#----------------------------------------------------------#
+SERVER="<server name>";
+PREFIX="<server prefix>";
+RUN_USER=$(who | head -n 1 | awk '{print $1}');
+RUN_SCRIPT=${0##*/};
+VESTA_USERS=$(ls "/home/");
+BACKUPS_DIR="/home/backup";
+LOG="/var/log/$RUN_SCRIPT.log";
+#----------------------------------------------------------#
+
+echo " " >> ${LOG};
+echo " " >> ${LOG};
+echo "#--------------------------#-------------------------#--------------------------#" >> ${LOG};
+echo "#--------------------------|$(date +%F" "%T" "%z)|--------------------------#" >> ${LOG};
+echo "#--------------------------#-------------------------#--------------------------#" >> ${LOG};
+echo "[$(date +%F" "%T" "%z)] -- Start script: #$RUN_SCRIPT# backups upload to mega. Run user: $RUN_USER - Params: $@" >> ${LOG};
+echo "[$(date +%F" "%T" "%z)] -- Print users list: "${VESTA_USERS} >> ${LOG};
+# Backup count
+if [ -z ${1} ]; then
+	BACKUP_COUNT=21;
+else
+	BACKUP_COUNT=${1};
+fi
+echo "[$(date +%F" "%T" "%z)] -- Count backups upload: $BACKUP_COUNT" >> ${LOG};
+
+# Create base backup folder
+[ -z "$(megals --reload /Root/${PREFIX}${SERVER})" ] && megamkdir /Root/${PREFIX}${SERVER} >> ${LOG} 2>> ${LOG}
+
+# Upload backups
+for user in $VESTA_USERS; do
+	echo "[$(date +%F" "%T" "%z)] -- Start upload $user backups:" >> ${LOG};
+	files=$(/usr/bin/find  ${BACKUPS_DIR}*  -type f -name "$user.*");
+	for file in $files; do
+		filename=${file##*/}
+		echo "[$(date +%F" "%T" "%z)] -- Upload: $file" >> ${LOG};
+		megaput --no-progress --reload --path "/Root/${PREFIX}${SERVER}/${filename}" "${file}" >> ${LOG} 2>> ${LOG}
+	done
+	echo "[$(date +%F" "%T" "%z)] -- Stop upload $user backups" >> ${LOG};
+	# Remove old backups
+	echo "[$(date +%F" "%T" "%z)] -- Start remove $user cloud backups:" >> ${LOG};
+	while [ $(megals --reload /Root/${PREFIX}${SERVER} | grep -E "/Root/${PREFIX}${SERVER}/${user}.*$" | wc -l) -gt ${BACKUP_COUNT} ]
+	do
+		TO_REMOVE=$(megals --reload /Root/${PREFIX}${SERVER} | grep -E "/Root/${PREFIX}${SERVER}/${user}.*$" | sort | head -n 1)
+		echo "[$(date +%F" "%T" "%z)] -- Remove file: mega:$TO_REMOVE" >> ${LOG};
+		megarm ${TO_REMOVE} >> ${LOG} 2>> ${LOG}
+	done
+	echo "[$(date +%F" "%T" "%z)] -- Stop remove $user cloud backups" >> ${LOG};
+done
+
+# Remove mega tmp
+rm "${BACKUPS_DIR}/tmp.*/*" > /dev/null 2>&1
+rm -r "${BACKUPS_DIR}/tmp.*" > /dev/null 2>&1
+echo "#-------------------------------------------------------------------------------#" >> ${LOG};
+echo " " >> ${LOG};
+echo " " >> ${LOG};
+exit 0;
