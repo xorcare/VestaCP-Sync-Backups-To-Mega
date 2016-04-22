@@ -3,9 +3,9 @@
 # options: count
 # The function for copy backups user or all users to mega cloud.
 
-#----------------------------------------------------------#
-#                Configuration definition                  #
-#----------------------------------------------------------#
+#---------------------------------------------------------#
+#                Configuration definition                 #
+#---------------------------------------------------------#
 SERVER="<server name>";
 PREFIX="<server prefix>";
 RUN_USER=$(who | head -n 1 | awk '{print $1}');
@@ -13,13 +13,13 @@ RUN_SCRIPT=${0##*/};
 VESTA_USERS=$(ls "/home/");
 BACKUPS_DIR="/home/backup";
 LOG="/var/log/$RUN_SCRIPT.log";
-#----------------------------------------------------------#
+#---------------------------------------------------------#
 
 echo " " >> ${LOG};
 echo " " >> ${LOG};
-echo "#--------------------------#-------------------------#--------------------------#" >> ${LOG};
-echo "#--------------------------|$(date +%F" "%T" "%z)|--------------------------#" >> ${LOG};
-echo "#--------------------------#-------------------------#--------------------------#" >> ${LOG};
+echo "#------------#-------------------------#------------#" >> ${LOG};
+echo "#------------|$(date +%F" "%T" "%z)|------------#" >> ${LOG};
+echo "#------------#-------------------------#------------#" >> ${LOG};
 echo "[$(date +%F" "%T" "%z)] -- Start script: #$RUN_SCRIPT# backups upload to mega. Run user: $RUN_USER - Params: $@" >> ${LOG};
 echo "[$(date +%F" "%T" "%z)] -- Print users list: "${VESTA_USERS} >> ${LOG};
 # Backup count
@@ -55,9 +55,11 @@ for user in $VESTA_USERS; do
 done
 
 # Remove mega tmp
-rm "${BACKUPS_DIR}/tmp.*/*" > /dev/null 2>&1
-rm -r "${BACKUPS_DIR}/tmp.*" > /dev/null 2>&1
-echo "#-------------------------------------------------------------------------------#" >> ${LOG};
+echo "[$(date +%F" "%T" "%z)] -- Remove Mega TMP" >> ${LOG};
+rm -rf "${BACKUPS_DIR}/tmp.*/*" >> ${LOG} 2>&1
+rm -rf "${BACKUPS_DIR}/tmp.*" >> ${LOG} 2>&1
+echo "#---------------------------------------------------------#" >> ${LOG};
 echo " " >> ${LOG};
 echo " " >> ${LOG};
-exit 0;
+
+exit

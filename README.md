@@ -17,10 +17,10 @@ VestaCP загрузка бэкапов в облако MEGA
 #!/bin/bash
 
 #Необходимые пакеты
-sudo apt-get install -y build-essential pkg-config libglib2.0-dev libssl-dev libcurl4-openssl-dev libfuse-dev glib-networking
+sudo apt-get -y install build-essential libglib2.0-dev libssl-dev libcurl4-openssl-dev libgirepository1.0-dev
 
 #Выбор версии пакета
-VERSION="1.9.95" #Под эту версию написан скрипт,может быть не совместим с другими версиями
+VERSION="1.9.97" #Под эту версию написан скрипт,может быть не совместим с другими версиями
 
 #Установка самого пакета
 wget http://megatools.megous.com/builds/megatools-${VERSION}.tar.gz
