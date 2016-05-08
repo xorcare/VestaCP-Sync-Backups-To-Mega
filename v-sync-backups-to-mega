@@ -6,8 +6,8 @@
 #---------------------------------------------------------#
 #                Configuration definition                 #
 #---------------------------------------------------------#
-SERVER="<server name>"; #Replace the name of the folder
-PREFIX="<server prefix>"; #Replace it with a prefix or left blank
+SERVER="FOLDER_NAME"; #Replace the name of the folder
+PREFIX="FOLDER_PREFIX_"; #Replace it with a prefix or left blank
 RUN_USER=$(who | head -n 1 | awk '{print $1}');
 RUN_SCRIPT=${0##*/};
 VESTA_USERS=$(ls "/home/");
