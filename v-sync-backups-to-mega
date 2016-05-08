@@ -6,13 +6,13 @@
 #---------------------------------------------------------#
 #                Configuration definition                 #
 #---------------------------------------------------------#
-SERVER="<server name>";
-PREFIX="<server prefix>";
+SERVER="<server name>"; #Replace the name of the folder
+PREFIX="<server prefix>"; #Replace it with a prefix or left blank
 RUN_USER=$(who | head -n 1 | awk '{print $1}');
 RUN_SCRIPT=${0##*/};
 VESTA_USERS=$(ls "/home/");
-BACKUPS_DIR="/home/backup";
-LOG="/var/log/$RUN_SCRIPT.log";
+BACKUPS_DIR="/home/backup"; #Change the path to the folder with copies if different from the current
+LOG="/var/log/$RUN_SCRIPT.log"; #Log file the script
 #---------------------------------------------------------#
 
 echo " " >> ${LOG};
@@ -61,5 +61,5 @@ rm -rf "${BACKUPS_DIR}/tmp.*" >> ${LOG} 2>&1
 echo "#---------------------------------------------------------#" >> ${LOG};
 echo " " >> ${LOG};
 echo " " >> ${LOG};
-
+exit
 exit
