@@ -24,7 +24,7 @@ LOG_MAX_ROWS_COUNT=200000; #The maximum number of rows in a log file. In excess 
 #Backup count
 if(echo "$1" | grep -E -q "^?[0-9]+$"); then BACKUP_COUNT=${1}; fi;
 #The maximum number of rows in a log file
-if(echo "$1" | grep -E -q "^?[0-9]+$"); then LOG_MAX_ROWS_COUNT=${1}; fi;
+if(echo "$1" | grep -E -q "^?[0-9]+$"); then LOG_MAX_ROWS_COUNT=${2}; fi;
 #---------------------------------------------------------#
 
 #Checking the number of log file lines
