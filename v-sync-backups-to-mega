@@ -1,65 +1,78 @@
 #!/bin/bash
-# info: copy backups user or all users to mega cloud
-# options: count
-# The function for copy backups user or all users to mega cloud.
+# info: Script loading all  backups users in the MEGA cloud
+# expansion: Functional additions for Vesta Control Panel
+# options: BACKUP_COUNT LOG_MAX_ROWS_COUNT
+# version: v2.0
+#
+# Copyright (c) 2016 Vasilyuk Vasiliy <vasilyuk.vasiliy@gmail.com>
+
 
 #---------------------------------------------------------#
 #                Configuration definition                 #
 #---------------------------------------------------------#
-SERVER="FOLDER_NAME"; #Replace the name of the folder
-PREFIX="FOLDER_PREFIX_"; #Replace it with a prefix or left blank
-RUN_USER=$(who | head -n 1 | awk '{print $1}');
-RUN_SCRIPT=${0##*/};
-VESTA_USERS=$(ls "/home/");
-BACKUPS_DIR="/home/backup"; #Change the path to the folder with copies if different from the current
+CLOUD_BACKUPS_DIR="DEFAULT_DIR"; #Name the backup directory in the MEGA cloud
+RUN_USER=$(who | head -n 1 | awk '{print $1}'); #The user running the script
+RUN_SCRIPT=${0##*/}; #The name of the current script at startup
+VESTA_USERS=$(ls "/home/"); #A simple method to obtain a list of users
+LOCAL_BACKUPS_DIR="/backup/"; #Universal path to local backups VestaCP
 LOG="/var/log/$RUN_SCRIPT.log"; #Log file the script
+BACKUP_COUNT=21; #The default value for the number of backups
+LOG_MAX_ROWS_COUNT=200000; #The maximum number of rows in a log file. In excess of the log is cleared. 200000 lines ~ 50 MiB
+#---------------------------------------------------------#
+#                    Reading options                      #
+#---------------------------------------------------------#
+#Backup count
+if(echo "$1" | grep -E -q "^?[0-9]+$"); then BACKUP_COUNT=${1}; fi;
+#The maximum number of rows in a log file
+if(echo "$1" | grep -E -q "^?[0-9]+$"); then LOG_MAX_ROWS_COUNT=${1}; fi;
 #---------------------------------------------------------#
 
+#Checking the number of log file lines
+if [ $(cat ${LOG} | wc -l) -gt ${LOG_MAX_ROWS_COUNT} ]; then echo "[$(date +%F" "%T" "%z)] -- Log file cleared." > ${LOG}; fi;
+
 echo " " >> ${LOG};
 echo " " >> ${LOG};
-echo "#------------#-------------------------#------------#" >> ${LOG};
-echo "#------------|$(date +%F" "%T" "%z)|------------#" >> ${LOG};
-echo "#------------#-------------------------#------------#" >> ${LOG};
-echo "[$(date +%F" "%T" "%z)] -- Start script: #$RUN_SCRIPT# backups upload to mega. Run user: $RUN_USER - Params: $@" >> ${LOG};
+echo "#------------------------#-------------------------#------------------------#" >> ${LOG};
+echo "#------------------------|$(date +%F" "%T" "%z)|------------------------#" >> ${LOG};
+echo "#------------------------#-------------------------#------------------------#" >> ${LOG};
+echo "[$(date +%F" "%T" "%z)] -- Start script: #$RUN_SCRIPT# backups upload to mega." >> ${LOG};
+echo "[$(date +%F" "%T" "%z)] -- Run user: $RUN_USER - Params: $@" >> ${LOG};
 echo "[$(date +%F" "%T" "%z)] -- Print users list: "${VESTA_USERS} >> ${LOG};
-# Backup count
-if [ -z ${1} ]; then
-	BACKUP_COUNT=21;
-else
-	BACKUP_COUNT=${1};
-fi
 echo "[$(date +%F" "%T" "%z)] -- Count backups upload: $BACKUP_COUNT" >> ${LOG};
+echo "[$(date +%F" "%T" "%z)] -- Maximum number of rows in a log file: $LOG_MAX_ROWS_COUNT" >> ${LOG};
+#Create base backups directory in the MEGA cloud
+[ -z "$(megals --reload /Root/${CLOUD_BACKUPS_DIR})" ] && megamkdir /Root/${CLOUD_BACKUPS_DIR} >> ${LOG} 2>> ${LOG}
 
-# Create base backup folder
-[ -z "$(megals --reload /Root/${PREFIX}${SERVER})" ] && megamkdir /Root/${PREFIX}${SERVER} >> ${LOG} 2>> ${LOG}
-
-# Upload backups
-for user in $VESTA_USERS; do
-	echo "[$(date +%F" "%T" "%z)] -- Start upload $user backups:" >> ${LOG};
-	files=$(/usr/bin/find  ${BACKUPS_DIR}*  -type f -name "$user.*");
-	for file in $files; do
-		filename=${file##*/}
-		echo "[$(date +%F" "%T" "%z)] -- Upload: $file" >> ${LOG};
-		megaput --no-progress --reload --path "/Root/${PREFIX}${SERVER}/${filename}" "${file}" >> ${LOG} 2>> ${LOG}
-	done
-	echo "[$(date +%F" "%T" "%z)] -- Stop upload $user backups" >> ${LOG};
-	# Remove old backups
-	echo "[$(date +%F" "%T" "%z)] -- Start remove $user cloud backups:" >> ${LOG};
-	while [ $(megals --reload /Root/${PREFIX}${SERVER} | grep -E "/Root/${PREFIX}${SERVER}/${user}.*$" | wc -l) -gt ${BACKUP_COUNT} ]
+echo "[$(date +%F" "%T" "%z)]" >> ${LOG};
+#Upload backups
+for USER in $VESTA_USERS; do
+echo "[$(date +%F" "%T" "%z)] -- User log block: $USER" >> ${LOG};
+	#Remove old backups
+	echo "[$(date +%F" "%T" "%z)] -- Start remove $USER cloud backups:" >> ${LOG};
+	while [ $(megals --reload /Root/${CLOUD_BACKUPS_DIR} | grep -E "/Root/${CLOUD_BACKUPS_DIR}/${USER}.*" | wc -l) -gt ${BACKUP_COUNT} ]
 	do
-		TO_REMOVE=$(megals --reload /Root/${PREFIX}${SERVER} | grep -E "/Root/${PREFIX}${SERVER}/${user}.*$" | sort | head -n 1)
+		TO_REMOVE=$(megals --reload /Root/${CLOUD_BACKUPS_DIR} | grep -E "/Root/${CLOUD_BACKUPS_DIR}/${USER}.*" | sort | head -n 1)
 		echo "[$(date +%F" "%T" "%z)] -- Remove file: mega:$TO_REMOVE" >> ${LOG};
 		megarm ${TO_REMOVE} >> ${LOG} 2>> ${LOG}
 	done
-	echo "[$(date +%F" "%T" "%z)] -- Stop remove $user cloud backups" >> ${LOG};
+	echo "[$(date +%F" "%T" "%z)] -- Stop remove $USER cloud backups" >> ${LOG};
+
+	echo "[$(date +%F" "%T" "%z)] -- Start upload $USER backups:" >> ${LOG};
+	FILES=$(/usr/bin/find  ${LOCAL_BACKUPS_DIR}  -type f -name "$USER.*");
+	for FILE in $FILES; do
+		FILENAME=${FILE##*/}
+		echo "[$(date +%F" "%T" "%z)] -- Upload: $FILE" >> ${LOG};
+		megaput --no-progress --reload --path "/Root/${CLOUD_BACKUPS_DIR}/${FILENAME}" "${FILE}" >> ${LOG} 2>> ${LOG}
+	done
+	echo "[$(date +%F" "%T" "%z)] -- Stop upload $USER backups" >> ${LOG};
+echo "[$(date +%F" "%T" "%z)]" >> ${LOG};
 done
 
-# Remove mega tmp
+#Remove mega tmp
 echo "[$(date +%F" "%T" "%z)] -- Remove Mega TMP" >> ${LOG};
-rm -rf "${BACKUPS_DIR}/tmp.*/*" >> ${LOG} 2>&1
-rm -rf "${BACKUPS_DIR}/tmp.*" >> ${LOG} 2>&1
-echo "#---------------------------------------------------------#" >> ${LOG};
+rm -rf "${LOCAL_BACKUPS_DIR}/tmp.*/*" >> ${LOG} 2>&1
+rm -rf "${LOCAL_BACKUPS_DIR}/tmp.*" >> ${LOG} 2>&1
+echo "#---------------------------------------------------------------------------#" >> ${LOG};
 echo " " >> ${LOG};
 echo " " >> ${LOG};
-exit
 exit
