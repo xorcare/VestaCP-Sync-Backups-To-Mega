@@ -1,67 +1,65 @@
-# VestaCP загрузка резервных копий в облако MEGA [![Analytics](https://ga-tracking-img.appspot.com/UA-77529928-1/git/VestaCP-Sync-Backups-To-Mega/readme?pixel&useReferer)](https://ga-tracking-img.appspot.com)
+﻿# VestaCP: uploading backups to the MEGA cloud [![](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme?gtid=UA-77529928-1&mr)](https://ga-spider.appspot.com)
 
-(*v-sync-backups-to-mega - скрипт для синхронизации бэкапов с облаком MEGA*)
+(*v-sync-backups-to-mega - script for syncing backups with Mega cloud*)
 
-С помощью данного скрипта вы можете автоматизировать загрузку резервных копий в облако **MEGA**, которое бесплатно предоставляет **50 GiB** пространства в облаке. Также есть платные тарифы.
+This script allows to automate uploading backups to the **MEGA** cloud, which provides **50 GiB** GiB of the cloud space for free (and provides paid plans as well).
 
-Скрипт очень прост в использовании. Его несложно установить на собственный сервер. Разумеется, если есть навыки работы с консолью, панелью управления **VestaCP** и немного сообразительности. Вперёд, в мир автоматизированного резервного копирования в облако!
+The script is a breeze to use. You can easily install it on your own server (with the help of some little ingenuity, and if you are comfortable with the command line and **VestaCP** control panel). Let's go ahead and dive into the world of automated cloud backups!
 
-# Зависимости 
+[![](https://img.shields.io/badge/LICENSE-MIT-blue.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme?gtid=UA-77529928-1&mr&mgo&go=https://git.io/vrxu8) [![](https://img.shields.io/badge/README-RU-green.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme?gtid=UA-77529928-1&mr&mgo&go=https://git.io/voGJf) [![](https://img.shields.io/badge/RELEASE-V2.0-blue.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme?gtid=UA-77529928-1&mr&mgo&go=https://github.com/By-Vasiliy/VestaCP-Sync-Backups-To-Mega/releases/tag/v2.0)
 
-(*Предварительная установка пакетов от которых зависит скрипт*)
+# Dependencies 
 
-Для работы скрипта необходимо установить [MegaTools](https://megatools.megous.com/).
+(*Pre-installation of the packages required for the script*)
 
-Скрипт автоматической установки для Linux Ubuntu 14.04: [install-megatools.sh](https://git.io/vrq6v) (где его искать? Смотрите файлы в git репозитории!).
+First, you need to install [MegaTools](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme?gtid=UA-77529928-1&mr&mgo&go=https://megatools.megous.com).
 
-*Также MegaTools и скрипт(v-sync-backups-to-mega)  можно установить под любую Linux OS, но инструкция написана под Ubuntu 14.04 и не проверялась под другими системами. Так что, если вы захотите плясок  бубном и у вас всё получится, можете составить или дополнить инструкцию.*
+The autoinstall script for Linux Ubuntu 14.04: [install-megatools.sh](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme?gtid=UA-77529928-1&mr&mgo&go=https://git.io/vrq6v) (Where can you find it? Look up for the files in the git repository!).
 
-**Проверка, установился ли MegaTools:** От имени любого пользователя выполните команду ***megareg***, и
-если результат такой:
+*MegaTools and the script (v-sync-backups-to-mega) can be installed on any Linux OS, but my  instructions are written for Ubuntu 14.04 and have not been tested under other systems. So, if you want to try it yourself and the outcome is successful, you are welcome to contribute to this guide.* 
+
+ **To check, if MegaTools installed successfully:** run the command ***megareg*** under any user, and it the outcome is like this:
 
 ```
 ERROR: You must specify either --register or --verify option
 ```
 
-то всё хорошо, а если такой:
+..then everything is ok. while if it's like this:
 
 ```
 megareg: command not found
 ```
 
-то **MegaTools** не установился - ищите проблему (почти всегда всё ставится без плясок с бубном, но могут встретиться проблемы).
+then **MegaTools** installation failed and you should look for the problem (but normally everything goes well).
 
 
-# Установка 
+# Installation 
 
-(*Установка и настройка скрипта*)
+(*Script installation and customization*)
 
-Необходимо разместить скрипт (v-sync-backups-to-mega) в папке **/usr/local/vesta/bin/** и внести небольшие изменения в скрипт:
-
-Найдите в файле скрипта следующую строку:
+Next, place the script (v-sync-backups-to-mega) in the **/usr/local/vesta/bin/** folder and make the following small changes to the script.
+ 
+Find the following line in the script file:
 
 ```
 CLOUD_BACKUPS_DIR="DEFAULT_DIR"; #Name the backup directory in the MEGA cloud
 ```
+and replace *DEFAULT_DIR* with the folder name of your choice. The script will automatically create a folder in the cloud with the same name (if it was absent). For instance: “vps1”, but something clear is better, and the name should be without spaces). The script will use this folder upload your backups.
 
-и замените *DEFAULT_DIR* на необходимое вам название папки. Скрипт автоматически создаст в облаке папку с таким названием (если она отсутствует), и будет загружать в неё резервные копии (пример: vps1 — но лучше что-нибудь вразумительное, без пробелов).
-
-После всех изменений выполняем команды:
+Then run the following commands:
 
 ```
 chmod 770 /usr/local/vesta/bin/v-sync-backups-to-mega
 chown root:root /usr/local/vesta/bin/v-sync-backups-to-mega
 ```
-
-Далее необходимо создать файл **.megarc** в домашней директории **root** (/root/.megarc) со следующими данными:
+Next, create a file **.megarc** in the **root** home directory (/root/.megarc), containing the following information:
 
 ```
 [Login]
 Username = Your_Mega_Username
 Password = Your_Mega_Password
 ```
-
-**Проверяем результат:** От имени **root** выполняем команду ***megals*** ( можно просто выполнить команду ***sudo megals*** #под Linux Ubuntu/Debian), должно вывести что-то похожее:
+**Check the result:** on behalf of **root** run the command ***megals*** (or you can just run the command ***sudo megals*** #Linux Ubuntu/Debian). It should print something like this:
 
 ```
 /Contacts
@@ -69,51 +67,45 @@ Password = Your_Mega_Password
 /Root
 /Trash
 ```
+If the command gives back an error, then the config file **.megarc** was filled with the wrong data, or you ran the command not on the behalf of **root**.
 
-Если в результате выполнения команды произошла ошибка, то неправильно заполнен конфигурационный файл **.megarc**,  либо вы выполнили команду не от имени **root**.
+# CRON job 
 
-# CRON задание 
+(*CRON job — scheduled synchronization of the backups*)
 
-(*CRON задание – синхронизация резервных копий по расписанию*)
-
-Через панель управления Vesta создаём крон-задание с командой:
+Now let's use Vesta control panel to create a cron job with the command:
 
 ```
 sudo /usr/local/vesta/bin/v-sync-backups-to-mega $1 $2
 ```
+**$1** - The integer number of backup copies for 1 user, stored in the cloud. When this limit is exceeded, the oldest backup is deleted. The default number of copies stored is 21. If you have few users in the panel and the backup size does not exceed 500-800 MiB, this number of copies is quite reasonable. But it's highly recommended to estimate the number of backups you need for every particular case and check the cloud regularly.
+ 
+**$2** – The maximum number of lines in the log file. Once this value is exceeded, the log gets cleared, leaving only a message about the cleanup (by default, this value is equal to 200,000 lines ~ 50 MiB).
 
-**$1** - Целое число резервных копий для 1 пользователя, хранимое в облаке. При превышении этого числа наиболее старая резервная копия удаляется. По умолчанию хранится 21 копия. Если у вас мало пользователей в панели и размеры резервных копий не превышают 500-800 MiB, то это вполне приемлемая цифра. Но рассчитывать её желательно индивидуально и периодически проверять облако).
+# CRON example
 
-**$2** – Максимальное количество строк в лог-файле. После того, как это значение будет превышено, лог очистится, и в нём останется только сообщение об очистке (по умолчанию, данное значение равно 200000 строк ~ 50 MiB).
+![VestaCP script for uploading backups to the MEGA cloud - Cron example](http://i.imgur.com/CBt1lfx.png)
 
-# CRON пример 
+*The image shows an example of CRON job (every day at 7:15 a.m. the backup will synchronize with the cloud, the maximum number of copies - 21, and the maximum number of lines in the log file is 200000 ~ 50 MiB).*
 
-![VestaCP скрипт загрузки бэкапов в облако MEGA пример cron задания](http://i.imgur.com/8GXtDhR.png)
+# Log file 
 
-*На изображении показан пример CRON задания (каждый день в 7:15 утра резервные копии будут синхронизироваться с облаком, максимальное число копий - 21, и максимальное число строк в файле лога 200000 ~ 50 MiB).*
+(*The log file helps to always be aware of what's going on with your backups synchronization*)
 
-# Лог файл 
-
-(*Лог поможет всегда знать, как идут дела с синхронизацией резервных копий*)
-
-Лог пишется в стандартную папку **/var/log/**, название файла лога генерируется по схеме **название_скрипта.log (/var/log/название_скрипта.log)**
+The log file records to the default folder **/var/log/**, with it's name generated by formula: **navaneeta.log (/var/log/script_name.log)**. Log file by default:
 
 ```
-#Лог файл по умолчанию
 /var/log/v-sync-backups-to-mega.log
 ```
 
-# Поддержи разработчика
+# Support the developer
 
-(*Без доната трудновато*)
+(*Without Donat - hard*)
 
-[![Пожертвования в поддержку разработчика Василия Василюка: github.com/By-Vasiliy bitbucket.org/By-Vasiliy](http://i.imgur.com/gR66Yx3.png)](http://yasobe.ru/na/developer_by_vasiliy)
 
-# Лицензия
 
-Программное обеспечение распространяется под [MIT](https://git.io/vrtsA) лицензией.
+# License
+
+The software is distributed under the [MIT](https://git.io/vrxu8) license.
 
 # Copyright (c) 2016 Vasilyuk Vasiliy
-
-
-
