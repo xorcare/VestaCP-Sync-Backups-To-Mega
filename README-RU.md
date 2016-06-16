@@ -108,6 +108,17 @@ sudo /usr/local/vesta/bin/v-sync-backups-to-mega $1 $2
 
 (*Без доната трудновато*)
 
+***WebMoney***
+* R808133397823
+* Z347790264030
+* E175788944874
+* X060454244628
+* G149817486110
+* U448946356404
+* K200344065989
+
+***Yandex, Visa, MasterCard***
+
 [![Пожертвования в поддержку разработчика Василия Василюка: github.com/By-Vasiliy bitbucket.org/By-Vasiliy](http://i.imgur.com/gR66Yx3.png)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme-ru?gtid=UA-77529928-1&mr&mgo&go=http://yasobe.ru/na/developer_by_vasiliy)
 
 # Лицензия

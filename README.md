@@ -102,7 +102,14 @@ The log file records to the default folder **/var/log/**, with it's name generat
 
 (*Without Donat - hard*)
 
-
+***WebMoney***
+* Z347790264030
+* E175788944874
+* X060454244628
+* R808133397823
+* G149817486110
+* U448946356404
+* K200344065989
 
 # License
 
