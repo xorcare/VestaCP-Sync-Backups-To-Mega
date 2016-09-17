@@ -6,7 +6,7 @@
 
 Скрипт очень прост в использовании. Его несложно установить на собственный сервер. Разумеется, если есть навыки работы с консолью, панелью управления **VestaCP** и немного сообразительности. Вперёд, в мир автоматизированного резервного копирования в облако!
 
-[![](https://img.shields.io/badge/LICENSE-MIT-blue.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme-ru?gtid=UA-77529928-1&mr&mgo&go=https://git.io/vrxu8) [![](https://img.shields.io/badge/README-EN-green.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme-ru?gtid=UA-77529928-1&mr&mgo&go=https://git.io/vosBb) [![](https://img.shields.io/badge/RELEASE-V2.0-blue.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme-ru?gtid=UA-77529928-1&mr&mgo&go=https://github.com/By-Vasiliy/VestaCP-Sync-Backups-To-Mega/releases/tag/v2.0)
+[![](https://img.shields.io/badge/LICENSE-MIT-blue.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme-ru?gtid=UA-77529928-1&mr&mgo&go=https://git.io/vrxu8) [![](https://img.shields.io/badge/README-EN-green.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme-ru?gtid=UA-77529928-1&mr&mgo&go=https://git.io/vosBb) [![](https://img.shields.io/badge/RELEASE-V2.0-blue.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme-ru?gtid=UA-77529928-1&mr&mgo&go=https://github.com/By-Vasiliy/VestaCP-Sync-Backups-To-Mega/releases/tag/v1.1.2)
 
 # Зависимости 
 
