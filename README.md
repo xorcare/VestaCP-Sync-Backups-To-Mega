@@ -8,7 +8,7 @@ The script is a breeze to use. You can easily install it on your own server (wit
 
 [![](https://img.shields.io/badge/LICENSE-MIT-blue.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme?gtid=UA-77529928-1&mr&mgo&go=https://git.io/vrxu8)
 [![](https://img.shields.io/badge/README-RU-green.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme?gtid=UA-77529928-1&mr&mgo&go=https://git.io/voGJf)
-[![](https://img.shields.io/badge/RELEASE-V1.1.2-blue.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme?gtid=UA-77529928-1&mr&mgo&go=https://github.com/By-Vasiliy/VestaCP-Sync-Backups-To-Mega/releases/tag/v1.1.2)
+[![](https://img.shields.io/badge/RELEASE-V1.1.2-blue.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme?gtid=UA-77529928-1&mr&mgo&go=https://github.com/By-Vasiliy/VestaCP-Sync-Backups-To-Mega/releases/tag/1.1.2)
 
 # Dependencies 
 
