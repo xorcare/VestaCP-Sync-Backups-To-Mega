@@ -8,7 +8,7 @@
 
 [![](https://img.shields.io/badge/LICENSE-MIT-blue.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme-ru?gtid=UA-77529928-1&mr&mgo&go=https://git.io/vrxu8)
 [![](https://img.shields.io/badge/README-EN-green.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme-ru?gtid=UA-77529928-1&mr&mgo&go=https://git.io/vosBb)
-[![](https://img.shields.io/badge/RELEASE-V1.1.2-blue.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme-ru?gtid=UA-77529928-1&mr&mgo&go=https://github.com/By-Vasiliy/VestaCP-Sync-Backups-To-Mega/releases/tag/v1.1.2)
+[![](https://img.shields.io/badge/RELEASE-V1.1.2-blue.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme-ru?gtid=UA-77529928-1&mr&mgo&go=https://github.com/By-Vasiliy/VestaCP-Sync-Backups-To-Mega/releases/tag/1.1.2)
 
 # Зависимости 
 
