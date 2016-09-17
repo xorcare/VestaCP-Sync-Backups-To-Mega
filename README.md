@@ -6,7 +6,9 @@ This script allows to automate uploading backups to the **MEGA** cloud, which pr
 
 The script is a breeze to use. You can easily install it on your own server (with the help of some little ingenuity, and if you are comfortable with the command line and **VestaCP** control panel). Let's go ahead and dive into the world of automated cloud backups!
 
-[![](https://img.shields.io/badge/LICENSE-MIT-blue.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme?gtid=UA-77529928-1&mr&mgo&go=https://git.io/vrxu8) [![](https://img.shields.io/badge/README-RU-green.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme?gtid=UA-77529928-1&mr&mgo&go=https://git.io/voGJf) [![](https://img.shields.io/badge/RELEASE-V2.0-blue.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme?gtid=UA-77529928-1&mr&mgo&go=https://github.com/By-Vasiliy/VestaCP-Sync-Backups-To-Mega/releases/tag/v1.1.2)
+[![](https://img.shields.io/badge/LICENSE-MIT-blue.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme?gtid=UA-77529928-1&mr&mgo&go=https://git.io/vrxu8)
+[![](https://img.shields.io/badge/README-RU-green.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme?gtid=UA-77529928-1&mr&mgo&go=https://git.io/voGJf)
+[![](https://img.shields.io/badge/RELEASE-V1.1.2-blue.svg?style=flat-square)](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/readme?gtid=UA-77529928-1&mr&mgo&go=https://github.com/By-Vasiliy/VestaCP-Sync-Backups-To-Mega/releases/tag/v1.1.2)
 
 # Dependencies 
 
