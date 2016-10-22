@@ -1,4 +1,4 @@
-# The MIT License (MIT) [![](https://ga-spi.appspot.com/t/VestaCP-Sync-Backups-To-Mega/license?gtid=UA-77529928-1&mr)](https://ga-spider.appspot.com)
+# The MIT License (MIT)
 
 **Copyright (c) 2016 Vasilyuk Vasiliy \<vasilyuk.vasiliy@gmail.com\>**
 
@@ -19,4 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
 SOFTWARE.
-	
