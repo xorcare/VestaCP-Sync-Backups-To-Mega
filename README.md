@@ -6,9 +6,9 @@ This script allows to automate uploading backups to the **MEGA** cloud, which pr
 
 The script is a breeze to use. You can easily install it on your own server (with the help of some little ingenuity, and if you are comfortable with the command line and **VestaCP** control panel). Let's go ahead and dive into the world of automated cloud backups!
 
-[![](https://img.shields.io/badge/LICENSE-MIT-blue.svg?style=flat-square)](https://git.io/vrxu8)
-[![](https://img.shields.io/badge/README-RU-green.svg?style=flat-square)](https://git.io/voGJf)
-[![](https://img.shields.io/badge/RELEASE-V1.1.3-blue.svg?style=flat-square)](https://git.io/v1qrj)
+[![The MIT License (MIT)](https://img.shields.io/badge/LICENSE-MIT-blue.svg?style=flat-square)](https://git.io/vrxu8)
+[![README-RU](https://img.shields.io/badge/README-RU-green.svg?style=flat-square)](https://git.io/voGJf)
+[![v1.1.3 – Stabile](https://img.shields.io/badge/RELEASE-V1.1.3-blue.svg?style=flat-square)](https://git.io/v1qrj)
 
 ## Dependencies 
 
@@ -100,21 +100,8 @@ The log file records to the default folder **/var/log/**, with it's name generat
 /var/log/v-sync-backups-to-mega.log
 ```
 
-## Support the developer
-
-(*Without Donat - hard*)
-
-### WebMoney
-* Z347790264030
-* E175788944874
-* X060454244628
-* R808133397823
-* G149817486110
-* U448946356404
-* K200344065989
-
 ## License
 
 The software is distributed under the [MIT](https://git.io/vrxu8) license.
 
-## Copyright (c) 2016 Vasilyuk Vasiliy 
+## Copyright 2016 Vasilyuk Vasiliy 

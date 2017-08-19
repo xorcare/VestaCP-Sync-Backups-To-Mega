@@ -3,7 +3,7 @@
 # options: VERSION
 # version: v1.1.3
 #
-# Copyright (c) 2016 Vasilyuk Vasiliy <vasilyuk.vasiliy@gmail.com>
+# Copyright 2016 Vasilyuk Vasiliy <vasilyuk.vasiliy@gmail.com>
 
 
 sudo apt-get update

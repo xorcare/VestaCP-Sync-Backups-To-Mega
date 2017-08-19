@@ -6,9 +6,9 @@
 
 Скрипт очень прост в использовании. Его несложно установить на собственный сервер. Разумеется, если есть навыки работы с консолью, панелью управления **VestaCP** и немного сообразительности. Вперёд, в мир автоматизированного резервного копирования в облако!
 
-[![](https://img.shields.io/badge/LICENSE-MIT-blue.svg?style=flat-square)](https://git.io/vrxu8)
-[![](https://img.shields.io/badge/README-EN-green.svg?style=flat-square)](https://git.io/vosBb)
-[![](https://img.shields.io/badge/RELEASE-V1.1.3-blue.svg?style=flat-square)](https://git.io/v1qrj)
+[![The MIT License (MIT)](https://img.shields.io/badge/LICENSE-MIT-blue.svg?style=flat-square)](https://git.io/vrxu8)
+[![README-EN](https://img.shields.io/badge/README-EN-green.svg?style=flat-square)](https://git.io/vosBb)
+[![v1.1.3 – Stabile](https://img.shields.io/badge/RELEASE-V1.1.3-blue.svg?style=flat-square)](https://git.io/v1qrj)
 
 ## Зависимости 
 
@@ -106,25 +106,8 @@ sudo /usr/local/vesta/bin/v-sync-backups-to-mega $1 $2
 /var/log/v-sync-backups-to-mega.log
 ```
 
-## Поддержи разработчика
-
-(*Без доната трудновато*)
-
-### WebMoney
-* R808133397823
-* Z347790264030
-* E175788944874
-* X060454244628
-* G149817486110
-* U448946356404
-* K200344065989
-
-### Yandex, Visa, MasterCard
-
-[![Пожертвования в поддержку разработчика Василия Василюка: github.com/By-Vasiliy bitbucket.org/By-Vasiliy](http://i.imgur.com/gR66Yx3.png)](http://yasobe.ru/na/developer_by_vasiliy)
-
 ## Лицензия
 
 Программное обеспечение распространяется под [MIT](https://git.io/vrxu8) лицензией.
 
-## Copyright (c) 2016 Vasilyuk Vasiliy 
+## Copyright 2016 Vasilyuk Vasiliy 
