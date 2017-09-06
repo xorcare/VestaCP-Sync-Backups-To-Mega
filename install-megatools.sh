@@ -22,4 +22,3 @@ make
 sudo make install
 cd ..
 rm -rf megatools-$VERSION*
-exit

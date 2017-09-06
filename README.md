@@ -34,6 +34,16 @@ megareg: command not found
 
 then **MegaTools** installation failed and you should look for the problem (but normally everything goes well).
 
+### Additionally
+
+You also need to check that megatools commands work on behalf of user "root", if they don't work (true for centos) you can try to run the following commands
+
+```
+export PATH=$PATH:/usr/local/bin
+echo 'export PATH=$PATH:/usr/local/bin' >> ~/.bash_profile
+echo 'export PATH=$PATH:/usr/local/bin' >> ~/.profile
+echo 'export PATH=$PATH:/usr/local/bin' >> ~/.bashrc
+```
 
 ## Installation 
 
@@ -104,4 +114,4 @@ The log file records to the default folder **/var/log/**, with it's name generat
 
 The software is distributed under the [MIT](https://git.io/vrxu8) license.
 
-## Copyright 2016 Vasilyuk Vasiliy 
+**Copyright 2016 Vasilyuk Vasiliy**

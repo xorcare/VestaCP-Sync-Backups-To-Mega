@@ -76,6 +76,17 @@ Password = Your_Mega_Password
 
 Если в результате выполнения команды произошла ошибка, то неправильно заполнен конфигурационный файл **.megarc**,  либо вы выполнили команду не от имени **root**.
 
+### Дополнительно
+
+Также необходимо проверить что команды megatools работают от имени пользователя "root", если они не работают (актуально для centos) можно попробовать выполнить следующие команды
+
+```
+export PATH=$PATH:/usr/local/bin
+echo 'export PATH=$PATH:/usr/local/bin' >> ~/.bash_profile
+echo 'export PATH=$PATH:/usr/local/bin' >> ~/.profile
+echo 'export PATH=$PATH:/usr/local/bin' >> ~/.bashrc
+```
+
 ## CRON задание 
 
 (*CRON задание – синхронизация резервных копий по расписанию*)
@@ -110,4 +121,4 @@ sudo /usr/local/vesta/bin/v-sync-backups-to-mega $1 $2
 
 Программное обеспечение распространяется под [MIT](https://git.io/vrxu8) лицензией.
 
-## Copyright 2016 Vasilyuk Vasiliy 
+**Copyright 2016 Vasilyuk Vasiliy**
