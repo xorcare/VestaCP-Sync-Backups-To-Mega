@@ -20,7 +20,7 @@ The autoinstall script for Linux Ubuntu 14.04: [install-megatools.sh](https://gi
 
 *MegaTools and the script (v-sync-backups-to-mega) can be installed on any Linux OS, but my  instructions are written for Ubuntu 14.04 and have not been tested under other systems. So, if you want to try it yourself and the outcome is successful, you are welcome to contribute to this guide.* 
 
- **To check, if MegaTools installed successfully:** run the command ***megareg*** under any user, and it the outcome is like this:
+**To check, if MegaTools installed successfully:** run the command ***megareg*** under any user, and it the outcome is like this:
 
 ```
 ERROR: You must specify either --register or --verify option
@@ -56,6 +56,7 @@ Find the following line in the script file:
 ```
 CLOUD_BACKUPS_DIR="DEFAULT_DIR"; #Name the backup directory in the MEGA cloud
 ```
+
 and replace *DEFAULT_DIR* with the folder name of your choice. The script will automatically create a folder in the cloud with the same name (if it was absent). For instance: “vps1”, but something clear is better, and the name should be without spaces). The script will use this folder upload your backups.
 
 Then run the following commands:
@@ -64,6 +65,7 @@ Then run the following commands:
 chmod 770 /usr/local/vesta/bin/v-sync-backups-to-mega
 chown root:root /usr/local/vesta/bin/v-sync-backups-to-mega
 ```
+
 Next, create a file **.megarc** in the **root** home directory (/root/.megarc), containing the following information:
 
 ```
@@ -71,6 +73,7 @@ Next, create a file **.megarc** in the **root** home directory (/root/.megarc), 
 Username = Your_Mega_Username
 Password = Your_Mega_Password
 ```
+
 **Check the result:** on behalf of **root** run the command ***megals*** (or you can just run the command ***sudo megals*** #Linux Ubuntu/Debian). It should print something like this:
 
 ```
@@ -79,6 +82,7 @@ Password = Your_Mega_Password
 /Root
 /Trash
 ```
+
 If the command gives back an error, then the config file **.megarc** was filled with the wrong data, or you ran the command not on the behalf of **root**.
 
 ## CRON job 
@@ -90,6 +94,7 @@ Now let's use Vesta control panel to create a cron job with the command:
 ```
 sudo /usr/local/vesta/bin/v-sync-backups-to-mega $1 $2
 ```
+
 **$1** - The integer number of backup copies for 1 user, stored in the cloud. When this limit is exceeded, the oldest backup is deleted. The default number of copies stored is 21. If you have few users in the panel and the backup size does not exceed 500-800 MiB, this number of copies is quite reasonable. But it's highly recommended to estimate the number of backups you need for every particular case and check the cloud regularly.
  
 **$2** – The maximum number of lines in the log file. Once this value is exceeded, the log gets cleared, leaving only a message about the cleanup (by default, this value is equal to 200,000 lines ~ 50 MiB).
