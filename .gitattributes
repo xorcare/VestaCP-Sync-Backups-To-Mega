@@ -1,0 +1,4 @@
+# Shell scripts
+*.sh eol=lf
+*.md eol=lf
+v-sync-backups-to-mega eol=lf

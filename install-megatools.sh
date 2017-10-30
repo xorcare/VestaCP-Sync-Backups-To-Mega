@@ -13,12 +13,12 @@ if [ -z $1 ]; then
 else
 	VERSION=${1};
 fi;
-wget http://megatools.megous.com/builds/megatools-$VERSION.tar.gz
-zcat megatools-$VERSION.tar.gz > megatools-$VERSION.tar
-tar -xf megatools-$VERSION.tar
-cd megatools-$VERSION
+wget http://megatools.megous.com/builds/megatools-${VERSION}.tar.gz
+zcat megatools-${VERSION}.tar.gz > megatools-${VERSION}.tar
+tar -xf megatools-${VERSION}.tar
+cd megatools-${VERSION}
 ./configure
 make
 sudo make install
 cd ..
-rm -rf megatools-$VERSION*
+rm -rf megatools-${VERSION}*

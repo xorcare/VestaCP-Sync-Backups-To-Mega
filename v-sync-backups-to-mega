@@ -45,7 +45,7 @@ echo "[$(date +%F" "%T" "%z)] -- Maximum number of rows in a log file: $LOG_MAX_
 
 echo "[$(date +%F" "%T" "%z)]" >> ${LOG};
 #Upload backups
-for USER in $VESTA_USERS; do
+for USER in ${VESTA_USERS}; do
 echo "[$(date +%F" "%T" "%z)] -- User log block: $USER" >> ${LOG};
 	#Remove old backups
 	echo "[$(date +%F" "%T" "%z)] -- Start remove $USER cloud backups:" >> ${LOG};
@@ -59,7 +59,7 @@ echo "[$(date +%F" "%T" "%z)] -- User log block: $USER" >> ${LOG};
 
 	echo "[$(date +%F" "%T" "%z)] -- Start upload $USER backups:" >> ${LOG};
 	FILES=$(/usr/bin/find  ${LOCAL_BACKUPS_DIR}  -type f -name "$USER.*");
-	for FILE in $FILES; do
+	for FILE in ${FILES}; do
 		FILENAME=${FILE##*/}
 		echo "[$(date +%F" "%T" "%z)] -- Upload: $FILE" >> ${LOG};
 		megaput --no-progress --reload --path "/Root/${CLOUD_BACKUPS_DIR}/${FILENAME}" "${FILE}" >> ${LOG} 2>> ${LOG}
