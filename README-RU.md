@@ -119,5 +119,3 @@ sudo /usr/local/vesta/bin/v-sync-backups-to-mega $1 $2
 ## Лицензия
 
 Программное обеспечение распространяется под [MIT](https://git.io/vrxu8) лицензией.
-
-**Copyright 2016 Vasilyuk Vasiliy**

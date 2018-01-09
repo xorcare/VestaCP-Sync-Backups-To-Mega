@@ -118,5 +118,3 @@ The log file records to the default folder **/var/log/**, with it's name generat
 ## License
 
 The software is distributed under the [MIT](https://git.io/vrxu8) license.
-
-**Copyright 2016 Vasilyuk Vasiliy**
