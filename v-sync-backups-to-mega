@@ -6,6 +6,8 @@
 #
 # Copyright 2016 Vasilyuk Vasiliy <vasilyukvasiliy@gmail.com>
 
+# Fix: Centos error starting CRON task / megals: command not found #1
+export PATH=$PATH:/usr/local/bin
 
 #---------------------------------------------------------#
 #                Configuration definition                 #
